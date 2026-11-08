@@ -62,7 +62,7 @@ SRC="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ -f "$SRC/Dockerfile" ] && [ -f "$SRC/Caddyfile" ]; then
   if [ "$SRC" != "$INSTALL_DIR" ]; then
     c "Kopiere Projekt nach $INSTALL_DIR"; mkdir -p "$INSTALL_DIR"
-    cp -a "$SRC"/. "$INSTALL_DIR"/; rm -rf "$INSTALL_DIR/.git"
+    tar -C "$SRC" --exclude=./.git --exclude=./node_modules --exclude=./.next --exclude=./out -cf - . | tar -C "$INSTALL_DIR" -xf -
   fi
 else
   command -v git >/dev/null || { apt-get update -qq && apt-get install -y -qq git; }
@@ -74,7 +74,7 @@ cd "$INSTALL_DIR"
 printf 'DOMAIN=%s\nACME_EMAIL=%s\n' "$DOMAIN" "$ACME_EMAIL" > .env; chmod 600 .env
 
 # --- Starten ----------------------------------------------------------------
-c "Baue und starte Container"
+c "Baue und starte Container (der erste Build dauert 1–3 Minuten)"
 docker compose up -d --build
 
 c "Warte auf HTTPS-Zertifikat (bis zu 90 s)"

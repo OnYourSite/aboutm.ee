@@ -1,3 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="AboutM.ee"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5aa9e6"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs><rect width="64" height="64" rx="18" fill="url(#g)"/>
-<path d="M15 47V29a9 9 0 0 1 17 -4.2A9 9 0 0 1 49 29v18" fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/>
-<circle cx="32" cy="45.5" r="3.6" fill="#fff"/></svg>
